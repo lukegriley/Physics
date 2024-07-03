@@ -5,7 +5,7 @@
 See video:
 https://drive.google.com/file/d/1hkqQdZKfSBudEc16rXedYG5Sh09-pvr1/preview
 
-## Extra Features
+## Features
 - RK4 implicit integration. A total of 4 euler deriv evals are taken per timestep, leading to more stable simulation.
 - Parallelization (shown in video): I used OpenMP in three places:
   - Looping through each node to detect collisions.
