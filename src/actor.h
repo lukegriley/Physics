@@ -2,7 +2,7 @@
 #define ACTOR_H
 #include "graphics/shape.h"
 #include "graphics/meshloader.h"
-
+#include "collision.h"
 #include <Eigen/Dense>
 enum PhysicsType {STATIC,RIGID_BODY};
 
@@ -11,6 +11,8 @@ enum PrimitiveType {CUBE,SPHERE,CONE,CYLINDER,MESH};
 using namespace Eigen;
 using namespace std;
 
+
+
 class Actor
 {
 public:
@@ -18,19 +20,31 @@ public:
     virtual void update(double delta) {};
     virtual void applyForce(Vector3d force,Vector3d point) {};
     Matrix4d getModelMatrix() {return this->modelMatrix;}
+    void draw(Shader* shader);
+    void initShape();
+    void setID(int id) {
+        this->id = id;
+    }
+    void setColor(Vector3f rgb) {
+        shape.setColor(rgb);
+    }
+    OBB getOBB();
+
+
+    virtual Vector3d checkCollision(Actor *a) {return Vector3d::Zero();};
+
     PhysicsType physType;
     PrimitiveType primType;
     Matrix4d modelMatrix;
     Vector3d position;
     Matrix3d orientation;
     double mass;
-    void draw(Shader* shader);
-    void initShape();
+    int id;
 protected:
+
     Shape shape;
 
 private:
-
 
     bool equivalentFace(Vector3i f1, Vector3i f2) {
         std::vector<int> indices1 = {f1[0],f1[1],f1[2]};

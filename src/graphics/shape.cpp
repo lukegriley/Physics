@@ -114,10 +114,6 @@ void Shape::init(const std::vector<Eigen::Vector3d> &vertices, const std::vector
         m_blue = 1;
         m_alpha = 1.f;
     }
-//    m_red = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-//    m_blue = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-//    m_green = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-//    m_alpha = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
 }
 
 void Shape::init(const std::vector<Eigen::Vector3d> &vertices, const std::vector<Eigen::Vector3i> &triangles, const std::vector<Eigen::Vector4i> &tetIndices)

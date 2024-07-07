@@ -56,6 +56,7 @@ add_executable(${PROJECT_NAME}
     src/rigidbody.h src/rigidbody.cpp
     src/static.h src/static.cpp
     src/graphics/grid.h src/graphics/grid.cpp
+    src/collision.h src/collision.cpp
 
 
 )

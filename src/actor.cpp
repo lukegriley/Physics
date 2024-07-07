@@ -40,3 +40,18 @@ void Actor::initShape() {
 void Actor::draw(Shader* shader) {
     shape.draw(shader);
 }
+
+OBB Actor::getOBB() {
+    OBB obb;
+    obb.point = this->position;
+
+    Eigen::Matrix3d rotationScale = this->modelMatrix.block<3, 3>(0, 0);
+
+    obb.axes.col(0) = rotationScale.col(0).normalized();
+    obb.axes.col(1) = rotationScale.col(1).normalized();
+    obb.axes.col(2) = rotationScale.col(2).normalized();
+
+    obb.extents = 0.5 * rotationScale.colwise().norm();
+
+    return obb;
+}

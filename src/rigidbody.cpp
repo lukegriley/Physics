@@ -25,7 +25,6 @@ void RigidBody::update(double delta) {
     this->linearVelocity = oldLinVel + 0.5 * delta * k1.col(2);
     this->angularVelocity = oldAngVel + 0.5 * delta * k1.col(3);
 
-
     Matrix<double, 3, 4> k2 = eulerDerivEval();
 
     //update state using derivatives at the midpoint
@@ -76,8 +75,8 @@ Matrix<double, 3, 4> RigidBody::eulerDerivEval() {
     Matrix<double, 3, 4> res = Matrix<double, 3, 4>::Zero();
 
     //apply any forces
-    applyForce(Vector3d(0.0, -1.0, 0.0), this->position);
-    // applyForce(Vector3d(1.0, 0.0, 0.0), this->position + Vector3d(-0.4, 0.0, 0.0));
+
+    applyForce(Vector3d(0.0, -2.0, 0.0), this->position);//gravity
 
     //calculate total torque, forces
     Vector3d total_torque = Vector3d::Zero();
@@ -97,3 +96,6 @@ Matrix<double, 3, 4> RigidBody::eulerDerivEval() {
     return res;
 }
 
+Vector3d RigidBody::checkCollision(Actor *a) {
+
+}
