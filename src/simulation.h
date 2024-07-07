@@ -6,6 +6,8 @@
 #include "graphics/camera.h"
 #include "collider.h"
 #include "rigidbody.h"
+#include "static.h"
+#include "graphics/grid.h"
 
 
 class Shader;
@@ -40,21 +42,20 @@ public:
         int x =0;
     }
     System m_system;
+
     RigidBody m_actor;
+    Static m_floor;
 
 private:
     Shape m_shape;
 
-
-
     void initSphereCollider();
-
 
     bool once = false;
     bool breakpoint = false;
     Camera *cam;
 
-    Shape m_ground;
+    // Shape m_ground;
     Shape m_sphere;
     void initGround();
     bool m_running = false;

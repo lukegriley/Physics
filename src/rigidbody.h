@@ -10,6 +10,7 @@ public:
     void update(double delta) override;
     Matrix<double, 3, 4>  eulerDerivEval();
     void applyForce(Vector3d force,Vector3d point) override;
+    Vector3d checkCollision(Actor *a) override;
     static Matrix3d skewSymmetric(Vector3d omega);
 
 private:
